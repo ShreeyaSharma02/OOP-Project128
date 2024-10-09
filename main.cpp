@@ -1,34 +1,25 @@
-#include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Student.h"
 #include "MathsBuilding.h"
 #include "ComputerScienceBuilding.h"
 #include "UniBar.h"
 #include "MainHub.h"
-#include "Interaction.h"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "University Simulation Game");
-
-    Interaction interaction;
-    Student student("Player1");
-
+    Student student("Alice");
     MathsBuilding mathsBuilding;
     ComputerScienceBuilding csBuilding;
     UniBar uniBar;
     MainHub mainHub;
 
-    while (window.isOpen()) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window.close();
-            // Handle other inputs for movement and interactions here
-        }
+    // Simulation of visiting buildings
+    student.visit_building(&mathsBuilding);
+    student.visit_building(&csBuilding);
+    student.visit_building(&uniBar);
+    student.visit_building(&mainHub);
 
-        window.clear();
-        // Draw the game elements here
-        window.display();
-    }
+    // Final stats and history
+    std::cout << student;
 
     return 0;
 }
