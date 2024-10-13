@@ -1,25 +1,69 @@
+#include <SFML/Graphics.hpp>
+#include "Interaction.h"
 #include <iostream>
-#include "Student.h"
-#include "MathsBuilding.h"
-#include "ComputerScienceBuilding.h"
-#include "UniBar.h"
-#include "MainHub.h"
+
+// Function to display welcome window and menu
+int display_menu(sf::RenderWindow& window) {
+    sf::Font font;
+    if (!font.loadFromFile("assets/arial.ttf")) {
+        std::cerr << "Error loading font" << std::endl;
+        return 2; // Exit if the font is not found
+    }
+
+    sf::Text welcomeText;
+    welcomeText.setFont(font);
+    welcomeText.setString("Welcome to the University Simulation Game!\n1. Start Game\n2. Exit");
+    welcomeText.setCharacterSize(24);
+    welcomeText.setFillColor(sf::Color::White);
+    welcomeText.setPosition(100.0f, 250.0f);
+
+    window.clear();
+    window.draw(welcomeText);
+    window.display();
+
+    // Handle user input for the menu
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                return 2; // Exit game if window is closed
+            }
+
+            // Check if a key is pressed
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Num1) {
+                    return 1; // Start the game
+                } else if (event.key.code == sf::Keyboard::Num2 || event.key.code == sf::Keyboard::Escape) {
+                    return 2; // Exit the game
+                }
+            }
+        }
+    }
+    return 2; // Default exit if window is closed unexpectedly
+}
 
 int main() {
-    Student student("Alice");
-    MathsBuilding mathsBuilding;
-    ComputerScienceBuilding csBuilding;
-    UniBar uniBar;
-    MainHub mainHub;
+    // Create the game window
+    sf::RenderWindow window(sf::VideoMode(800, 600), "University Simulation Game");
 
-    // Simulation of visiting buildings
-    student.visit_building(&mathsBuilding);
-    student.visit_building(&csBuilding);
-    student.visit_building(&uniBar);
-    student.visit_building(&mainHub);
+    // Display welcome screen and menu
+    int menu_selection = display_menu(window);
 
-    // Final stats and history
-    std::cout << student;
+    // Handle menu selection
+    if (menu_selection == 2) {
+        std::cout << "Exiting game..." << std::endl;
+        window.close();
+        return 0;
+    }
+
+    // Start the game if the user selects "Start Game"
+    Interaction interaction;
+    interaction.start_game();
+
+    // Main game loop
+    while (window.isOpen()) {
+        interaction.manage_interaction(window);
+    }
 
     return 0;
 }

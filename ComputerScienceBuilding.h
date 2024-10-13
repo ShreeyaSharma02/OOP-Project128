@@ -8,8 +8,10 @@
 class ComputerScienceBuilding : public AcademicBuilding {
 private:
     std::vector<Question> create_cs_questions();
+    sf::Texture texture; // Add this to manage the specific texture
+
 public:
-    ComputerScienceBuilding();
+    ComputerScienceBuilding(const sf::Vector2f& size, const sf::Vector2f& position, sf::Color color);
     void enter_building(Student& student) override;
     void ask_cs_question(Student& student);
     void reduce_social_battery(Student& student) override;

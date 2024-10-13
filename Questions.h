@@ -7,33 +7,29 @@
 class Question {
 private:
     std::string question_text;
-    std::vector<std::string> options; // Options for the multiple-choice question
-    int correct_option_index;         // Index of the correct option
-    double difficulty;                // Difficulty level of the question
+    std::vector<std::string> options;
+    int correct_option;
+    double difficulty;
 
 public:
-    // Constructor for a multiple-choice question
+    // Constructor to handle multiple-choice questions
     Question(const std::string& text, const std::vector<std::string>& opts, int correct_index, double diff)
-        : question_text(text), options(opts), correct_option_index(correct_index), difficulty(diff) {}
+        : question_text(text), options(opts), correct_option(correct_index), difficulty(diff) {}
 
-    // Getters
-    std::string get_question() const { return question_text; }
-    std::vector<std::string> get_options() const { return options; }
-    double get_difficulty() const { return difficulty; }
-
-    // Check if the answer is correct
-    bool check_answer(int answer_index) const {
-        return answer_index == correct_option_index;
+    const std::string& get_text() const {
+        return question_text;
     }
 
-    // Get the correct answer text
-    std::string get_correct_answer() const {
-        return options[correct_option_index];
+    const std::vector<std::string>& get_options() const {
+        return options;
     }
 
-    // Adjust the difficulty of the question
-    void adjust_difficulty(double new_difficulty) {
-        difficulty = new_difficulty;
+    int get_correct_option() const {
+        return correct_option;
+    }
+
+    double get_difficulty() const {
+        return difficulty;
     }
 };
 
