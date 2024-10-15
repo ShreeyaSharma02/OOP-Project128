@@ -1,7 +1,6 @@
 #include "UniBar.h"
 #include <iostream>
 
-// Constructor
 UniBar::UniBar(const sf::Vector2f& size, const sf::Vector2f& position, sf::Color color)
     : Building("Uni Bar", size, position, color) {
 
@@ -19,5 +18,5 @@ void UniBar::enter_building(Student& student) {
 
 // Implement recharge
 void UniBar::recharge(Student& student) {
-    student.get_social_battery().recharge_battery();  // This should work now
+    student.get_social_battery().recharge_battery(); 
 }
