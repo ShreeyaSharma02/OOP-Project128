@@ -1,5 +1,5 @@
 #include "SocialBattery.h"
-
+//Setting full battery
 SocialBattery::SocialBattery()
     : current_battery(100), max_battery(100) {}
 
