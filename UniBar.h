@@ -13,4 +13,4 @@ public:
     void recharge(Student& student);
 };
 
-#endif // UNIBAR_H
+#endif
