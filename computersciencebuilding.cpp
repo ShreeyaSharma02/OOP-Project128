@@ -1,24 +1,23 @@
 #include "ComputerScienceBuilding.h"
 #include <iostream>
 
-// Constructor
 ComputerScienceBuilding::ComputerScienceBuilding(const sf::Vector2f& size, const sf::Vector2f& position, sf::Color color)
     : AcademicBuilding("Computer Science Building", size, position, color) {
 
-    if (!texture.loadFromFile("assets/cs_building.jpg")) {  // Load specific texture for CS Building
+    if (!texture.loadFromFile("assets/cs_building.jpg")) {  // Load specific texture 
         std::cerr << "Error: Could not load Computer Science Building texture." << std::endl;
     }
 
-    shape.setTexture(&texture); // Set texture for the CS building shape
+    shape.setTexture(&texture); // Set texture shape
 }
 
-// Implement enter_building
+// Implementation
 void ComputerScienceBuilding::enter_building(Student& student) {
     reduce_social_battery(student);
     ask_cs_question(student);
 }
 
-// Implement ask_cs_question
+// Implement asking cs question
 void ComputerScienceBuilding::ask_cs_question(Student& student) {
     int level = student.get_level();
     std::vector<Question> cs_questions = create_cs_questions();
@@ -33,12 +32,12 @@ void ComputerScienceBuilding::ask_cs_question(Student& student) {
             std::cout << i + 1 << ": " << options[i] << "\n";
         }
 
-        // Ask for player's answer
+        // Asking for player's answer
         int player_choice = -1;
         std::cout << "Please select an option (1-" << options.size() << "): ";
         std::cin >> player_choice;
 
-        // Validate the input
+        // Validating input
         while (player_choice < 1 || player_choice > options.size()) {
             std::cout << "Invalid option. Please select a valid option (1-" << options.size() << "): ";
             std::cin >> player_choice;
@@ -51,11 +50,11 @@ void ComputerScienceBuilding::ask_cs_question(Student& student) {
     }
 }
 
-// Implement create_cs_questions
+// Implement creating cs questions
 std::vector<Question> ComputerScienceBuilding::create_cs_questions() {
     std::vector<Question> questions;
     questions.emplace_back(
-        "What is OOP?",  // Question text
+        "What is OOP?",  
         std::vector<std::string>{"Object-Oriented Programming", "Functional Programming", "Procedural Programming", "Logic Programming"},  // Options
         0,  // Correct answer index
         2.5  // Difficulty
@@ -63,13 +62,13 @@ std::vector<Question> ComputerScienceBuilding::create_cs_questions() {
     questions.emplace_back(
         "What is a virtual function?",
         std::vector<std::string>{"A function that can be overridden", "A function that is always static", "A function that cannot be inherited", "A function that runs outside the program"},
-        0,  // Correct answer index
-        3.0  // Difficulty
+        0,  
+        3.0  
     );
     return questions;
 }
 
-// Implement reduce_social_battery
+// Implement reduce social battery
 void ComputerScienceBuilding::reduce_social_battery(Student& student) {
-    student.get_social_battery().reduce_battery(15);  // Reduce social battery by 15
+    student.get_social_battery().reduce_battery(15);  
 }
