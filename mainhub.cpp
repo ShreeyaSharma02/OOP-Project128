@@ -1,7 +1,6 @@
 #include "MainHub.h"
 #include <iostream>
 
-// Constructor
 MainHub::MainHub(const sf::Vector2f& size, const sf::Vector2f& position, sf::Color color)
     : Building("Main Hub", size, position, color) {
 
@@ -10,17 +9,17 @@ MainHub::MainHub(const sf::Vector2f& size, const sf::Vector2f& position, sf::Col
         std::cerr << "Error: Could not load Main Hub texture." << std::endl;
     }
 
-    shape.setTexture(&texture);  // Apply texture
+    shape.setTexture(&texture);  
 }
 
-// Implement the pure virtual function from Building
+// virtual function from Building
 void MainHub::enter_building(Student& student) {
     std::cout << "Welcome to the Main Hub, " << student.get_name() << "!\n";
 
-    // Example logic for entering the Main Hub
+    //entering the Main Hub
     std::cout << "Here, you can view your stats and review your progress!\n";
 
-    // Call methods to view stats and history
+    // Call methods for viewing stats and history
     view_stats(student);
 }
 
