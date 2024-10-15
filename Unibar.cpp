@@ -11,7 +11,7 @@ UniBar::UniBar(const sf::Vector2f& size, const sf::Vector2f& position, sf::Color
     shape.setTexture(&texture); // Set texture for the UniBar shape
 }
 
-// Implement enter_building
+// Implement enter building
 void UniBar::enter_building(Student& student) {
     recharge(student);
 }
