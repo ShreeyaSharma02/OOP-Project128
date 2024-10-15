@@ -3,7 +3,7 @@
 
 #include "Student.h"
 #include "Building.h"
-#include "HUD.h"  // Include the HUD header
+#include "HUD.h"  
 #include <vector>
 #include <SFML/Graphics.hpp>
 
@@ -13,11 +13,11 @@ private:
     Student* student;
     std::vector<Building*> buildings;
 
-    // Add a texture and sprite for the background (map)
+    // Add a texture and sprite for the background 
     sf::Texture backgroundTexture;
     sf::Sprite backgroundSprite;
 
-    // Declare the HUD instance
+    // HUD instance
     HUD hud;
 
 public:
@@ -27,8 +27,8 @@ public:
     void manage_interaction(sf::RenderWindow& window);  // Pass window for rendering
     void end_game();
 
-    // Add a method to show the game-winning menu
+    // showing the game-winning menu
     void show_win_menu(sf::RenderWindow& window);
 };
 
-#endif // INTERACTION_H
+#endif 
