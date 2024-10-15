@@ -1,5 +1,5 @@
 #include "HUD.h"
-#include <iostream> // For printing errors to the console
+#include <iostream> 
 
 HUD::HUD() {
     if (!font.loadFromFile("assets/arial.ttf")) {
@@ -8,13 +8,13 @@ HUD::HUD() {
         hudText.setFont(font);
         hudText.setCharacterSize(24);
         hudText.setFillColor(sf::Color::White);
-        hudText.setPosition(10.0f, 10.0f);  // Position the HUD text
+        hudText.setPosition(10.0f, 10.0f);  // Position HUD text
     }
 }
 
 void HUD::update(const Student& student) {
-    // Remove the console output for HUD updates
-    // Update the HUD with player stats
+    // Remove console output for HUD updates
+    // Update HUD with player stats
     hudText.setString(
         "Name: " + student.get_name() +
         "\nLevel: " + std::to_string(student.get_level()) +
@@ -24,6 +24,6 @@ void HUD::update(const Student& student) {
 }
 
 void HUD::draw(sf::RenderWindow& window) {
-    // Draw the HUD text to the window
+    // Draw HUD text to the window
     window.draw(hudText);
 }
