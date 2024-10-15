@@ -16,14 +16,13 @@ private:
     SocialBattery social_battery;
     int correct_answers;  // Track number of correct answers
     int incorrect_answers;  // Track number of incorrect answers
-    sf::RectangleShape shape;  // For SFML rendering
+    sf::RectangleShape shape;  // SFML rendering
     float moveSpeed;  // Movement speed for the student
     bool inBuilding;  // Track if the student is inside a building
 
     sf::Texture texture;  // Manages the student's texture
 
 public:
-    // Constructor
     Student(const std::string& name);
 
     // Movement and rendering
@@ -35,7 +34,7 @@ public:
     void set_in_building(bool state);
 
     // Leveling system
-    void increase_level();  // Increment student's level
+    void increase_level();  
 
     // Grades system
     void increase_grades(double amount);
@@ -43,7 +42,7 @@ public:
     // Getters and logic for answering questions
     int get_level() const;
     double get_grades() const;
-    void answer_question(Question& question, int player_choice);// Update to track correct/wrong answers with player_choice
+    void answer_question(Question& question, int player_choice);// Update to track correct/wrong answers 
     void visit_building(class Building* building);
     const std::string& get_name() const;
 
@@ -68,4 +67,4 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Student& student);
 };
 
-#endif // STUDENT_H
+#endif 
