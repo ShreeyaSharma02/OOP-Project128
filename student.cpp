@@ -3,38 +3,34 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-// Constructor
 Student::Student(const std::string& student_name)
     : name(student_name), level(1), grades(0.0), moveSpeed(0.5f), inBuilding(false),
       correct_answers(0), incorrect_answers(0) {  // Initialize counters
 
-    // Load the student texture
+    // Student texture
     if (!texture.loadFromFile("assets/student.jpg")) {
         std::cerr << "Error: Could not load student texture." << std::endl;
     }
 
-    shape.setSize(sf::Vector2f(50.0f, 50.0f));  // Adjust the student size for better scaling
+    shape.setSize(sf::Vector2f(50.0f, 50.0f));  // Adjusting the student size 
     shape.setTexture(&texture);  // Apply texture to the student shape
     shape.setPosition(375.0f, 275.0f);  // Initial position
 }
 
-// Implement get_grades()
+
 double Student::get_grades() const {
     return grades;
 }
 
-// Implement increase_level
 void Student::increase_level() {
-    level++;  // Increment student's level
+    level++;  
     std::cout << "Level increased to: " << level << std::endl;
 }
 
-// Implement get_level()
 int Student::get_level() const {
     return level;
 }
 
-// Implement incrementing correct and incorrect answers
 void Student::increment_correct_answers() {
     correct_answers++;
 }
@@ -75,7 +71,7 @@ void Student::increase_grades(double amount) {
     }
 }
 
-// Implement has_won() to check if the student has won the game
+// check if the student has won the game
 bool Student::has_won() const {
     return level == 3;
 }
@@ -101,7 +97,6 @@ void Student::answer_question(Question& question, int player_choice) {
     }
 }
 
-// Implement get_name
 const std::string& Student::get_name() const {
     return name;
 }
@@ -117,7 +112,7 @@ void Student::set_in_building(bool state) {
 
 // Implement movement with boundary checks
 void Student::move(const sf::RenderWindow& window) {
-    const float stepSize = moveSpeed;  // Use the movement speed for smooth control
+    const float stepSize = moveSpeed;  // Use the movement speed 
 
     sf::Vector2f position = shape.getPosition();
 
