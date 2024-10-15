@@ -8,7 +8,7 @@
 class ComputerScienceBuilding : public AcademicBuilding {
 private:
     std::vector<Question> create_cs_questions();
-    sf::Texture texture; // Add this to manage the specific texture
+    sf::Texture texture; // managing specific texture
 
 public:
     ComputerScienceBuilding(const sf::Vector2f& size, const sf::Vector2f& position, sf::Color color);
@@ -18,4 +18,4 @@ public:
     void increase_difficulty(Question& question, int level);
 };
 
-#endif // COMPUTERSCIENCEBUILDING_H
+#endif
