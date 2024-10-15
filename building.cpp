@@ -1,7 +1,6 @@
 #include "Building.h"
 #include <iostream>
 
-// Constructor for Building
 Building::Building(const std::string& name, const sf::Vector2f& size, const sf::Vector2f& position, sf::Color color) 
     : building_name(name) {
 
@@ -14,12 +13,12 @@ Building::Building(const std::string& name, const sf::Vector2f& size, const sf::
     shape.setPosition(position);
 }
 
-// Get building name
+// building name
 std::string Building::get_building_name() const {
     return building_name;
 }
 
-// Draw the building using SFML
+// Draw the building 
 void Building::draw(sf::RenderWindow& window) {
     window.draw(shape);
 }
