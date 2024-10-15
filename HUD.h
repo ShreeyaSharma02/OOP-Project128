@@ -16,4 +16,4 @@ public:
     void draw(sf::RenderWindow& window);  // Draw the HUD on the window
 };
 
-#endif // HUD_H
+#endif 
