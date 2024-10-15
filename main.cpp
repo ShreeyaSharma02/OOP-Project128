@@ -2,12 +2,12 @@
 #include "Interaction.h"
 #include <iostream>
 
-// Function to display welcome window and menu
+// display welcome window and menu
 int display_menu(sf::RenderWindow& window) {
     sf::Font font;
     if (!font.loadFromFile("assets/arial.ttf")) {
         std::cerr << "Error loading font" << std::endl;
-        return 2; // Exit if the font is not found
+        return 2; // Exit for font if not found
     }
 
     sf::Text welcomeText;
@@ -26,7 +26,7 @@ int display_menu(sf::RenderWindow& window) {
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
-                return 2; // Exit game if window is closed
+                return 2; // Exit game 
             }
 
             // Check if a key is pressed
@@ -39,7 +39,7 @@ int display_menu(sf::RenderWindow& window) {
             }
         }
     }
-    return 2; // Default exit if window is closed unexpectedly
+    return 2; // Default exit 
 }
 
 int main() {
