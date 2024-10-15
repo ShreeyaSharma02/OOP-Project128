@@ -7,8 +7,8 @@
 class AcademicBuilding : public Building {
 public:
     AcademicBuilding(const std::string& name, const sf::Vector2f& size, const sf::Vector2f& position, sf::Color color);
-    virtual void reduce_social_battery(Student& student) = 0; // Abstract functionality for academic buildings
+    virtual void reduce_social_battery(Student& student) = 0; // Virtual function for academic buildings
 };
 
-#endif // ACADEMICBUILDING_H
+#endif
 
