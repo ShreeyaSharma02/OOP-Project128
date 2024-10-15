@@ -13,4 +13,4 @@ public:
     int get_current_battery() const;
 };
 
-#endif // SOCIALBATTERY_H
+#endif 
