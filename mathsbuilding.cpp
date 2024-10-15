@@ -12,13 +12,13 @@ MathsBuilding::MathsBuilding(const sf::Vector2f& size, const sf::Vector2f& posit
     shape.setTexture(&texture); // Set texture for the Maths building shape
 }
 
-// Implement enter_building
+// Implement enter building
 void MathsBuilding::enter_building(Student& student) {
     reduce_social_battery(student);
     ask_maths_question(student);
 }
 
-// Implement ask_maths_question
+// Implement asking maths question
 void MathsBuilding::ask_maths_question(Student& student) {
     int level = student.get_level();
     std::vector<Question> math_questions = create_math_questions();
@@ -33,43 +33,43 @@ void MathsBuilding::ask_maths_question(Student& student) {
             std::cout << i + 1 << ": " << options[i] << "\n";
         }
         
-        // Ask for player's answer
+        // Asking for player's answer
         int player_choice = -1;
         std::cout << "Please select an option (1-" << options.size() << "): ";
         std::cin >> player_choice;
 
-        // Validate the input
+        // Validating the input
         while (player_choice < 1 || player_choice > options.size()) {
             std::cout << "Invalid option. Please select a valid option (1-" << options.size() << "): ";
             std::cin >> player_choice;
         }
 
-        // Call answer_question with question and player_choice
-        student.answer_question(question, player_choice - 1);  // Adjust index for 0-based choice
+        // Calling answer_question with question and player_choice
+        student.answer_question(question, player_choice - 1);  
     } else {
         std::cout << "No more questions for this level.\n";
     }
 }
 
-// Implement create_math_questions
+// Implementing maths questions
 std::vector<Question> MathsBuilding::create_math_questions() {
     std::vector<Question> questions;
     questions.emplace_back(
-        "What is 2 + 2?",                           // Question text
-        std::vector<std::string>{"3", "4", "5", "6"}, // Options
+        "What is 2 + 2?",                           
+        std::vector<std::string>{"3", "4", "5", "6"}, 
         1,                                           // Correct answer index
         1.0                                          // Difficulty level
     );
     questions.emplace_back(
-        "Solve x: 2x = 10",                         // Question text
-        std::vector<std::string>{"4", "5", "6", "7"}, // Options
-        1,                                           // Correct answer index
-        1.5                                          // Difficulty level
+        "Solve x: 2x = 10",                         
+        std::vector<std::string>{"4", "5", "6", "7"}, 
+        1,                                           
+        1.5                                          
     );
     return questions;
 }
 
-// Implement reduce_social_battery
+// Implementing reduce_social_battery
 void MathsBuilding::reduce_social_battery(Student& student) {
-    student.get_social_battery().reduce_battery(10);  // Reduce social battery by 10
+    student.get_social_battery().reduce_battery(10);  
 }
