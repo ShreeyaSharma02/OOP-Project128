@@ -7,7 +7,7 @@
 #include <limits>
 #include <SFML/Graphics.hpp>
 
-// Constructor and Destructor
+
 Interaction::Interaction()
     : game_state(false), student(nullptr) {
 
@@ -33,8 +33,7 @@ void Interaction::start_game() {
     std::getline(std::cin, name);
     student = new Student(name);
 
-    // Initialize buildings and load textures
-    // Position each building on one of the four sides
+    // Initialize buildings and load textures & Positioning each building on one of the four sides
     buildings.push_back(new MathsBuilding(sf::Vector2f(100.0f, 100.0f), sf::Vector2f(20.0f, 240.0f), sf::Color::Blue)); // Left side
     buildings.push_back(new ComputerScienceBuilding(sf::Vector2f(100.0f, 100.0f), sf::Vector2f(690.0f, 240.0f), sf::Color::Red)); // Right side
     buildings.push_back(new UniBar(sf::Vector2f(100.0f, 100.0f), sf::Vector2f(355.0f, 500.0f), sf::Color::Green)); // Bottom side
@@ -50,12 +49,12 @@ void Interaction::manage_interaction(sf::RenderWindow& window) {
     while (game_state && window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
-            // Handle event to close the window
+            //Break the loop by closing the window
             if (event.type == sf::Event::Closed) {
-                window.close();  // Break the loop by closing the window
+                window.close(); 
             }
 
-            // Add a check for keypresses like Escape to quit the game
+            // keypresses like Escape to quit the game
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == sf::Keyboard::Escape) {
                     end_game();
@@ -64,7 +63,7 @@ void Interaction::manage_interaction(sf::RenderWindow& window) {
             }
         }
 
-        // Check if the student has won (reached level 3)
+        // Check if the student has won 
         if (student->has_won()) {
             show_win_menu(window);
             return;
@@ -98,7 +97,7 @@ void Interaction::manage_interaction(sf::RenderWindow& window) {
         // Render the game objects
         window.clear(sf::Color::Black);
 
-        // Draw the background (map)
+        // Draw the background 
         window.draw(backgroundSprite);
 
         // Draw student and buildings
@@ -138,7 +137,7 @@ void Interaction::show_win_menu(sf::RenderWindow& window) {
     window.draw(winText);
     window.display();
 
-    // Wait for user input to restart or close
+    // Wait for user input 
     bool selecting = true;
     while (selecting && window.isOpen()) {
         sf::Event event;
