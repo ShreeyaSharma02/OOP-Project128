@@ -12,7 +12,7 @@ private:
     double difficulty;
 
 public:
-    // Constructor to handle multiple-choice questions
+    // Handling multiple-choice questions
     Question(const std::string& text, const std::vector<std::string>& opts, int correct_index, double diff)
         : question_text(text), options(opts), correct_option(correct_index), difficulty(diff) {}
 
@@ -33,4 +33,4 @@ public:
     }
 };
 
-#endif // QUESTIONS_H
+#endif 
